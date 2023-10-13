@@ -65,3 +65,42 @@ install dotenv
             console.log("Middleware")
             next() //moves on to the next piece of Middleware after its completed.
             })
+
+
+
+# Express Router and API routes.
+* Create another folder called ROUTES in your backend directory. This will be where all of you api route files live. Inside this new file
+
+//Require router from express module
+//const express = require('express');
+//add request handlers
+//exported router
+
+APP(folder)
+├── BACKEND (folder)
+│ ├── routes (folder)
+│ │ └── workouts.js
+
+
+*workouts.js
+         ├──
+            require Express
+            Add request Handlers
+                    ├── GET    /workouts      -> Get's all workout Documents
+                    ├──POST    /workouts      -> Get's all workout Documents
+                    ├──GET     /workouts/:id  -> Get's a single workout Document
+                    ├──DELETE  /workouts/:id  -> Deletes a workout 
+                    ├──PATCH   /workouts/:id  -> Updates a workout \
+
+            Exportes router
+
+*server.js
+       ├──
+       // 9- Required workouts from Routes
+       //10- middleware (express.json())
+                                    ├──
+                                    //for the POST and PATCH request we are sending data to the server to add a new data. we can access it with 'req' object but we can only access if we use a bit of middleware in express app and i.e express.json()
+                                    // so any request that comes in , it looks for the body to the request some data we are sending to the server and if it does , then it patches it or attaches it to request object 'req'. so that we can access it in the request handler.
+
+        // 4- Routes
+        app.use('/api/workouts',workoutRoutes);
