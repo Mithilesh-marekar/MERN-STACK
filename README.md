@@ -1,4 +1,3 @@
-
 ## LEARNING MERN STACK
 
 A MERN stack is a popular web development framework that combines four key technologies: MongoDB, Express.js, React, and Node.js. This stack is designed for building full-stack web applications, with each component serving a specific role. Here's a high-level overview of how a MERN app works:
@@ -24,3 +23,45 @@ Here's the typical flow of a MERN application:
 5. This process repeats as users interact with the application, creating a seamless and interactive user experience.
 
 In summary, a MERN app works by utilizing MongoDB for data storage, Express.js for handling HTTP requests and defining APIs, React for building a dynamic user interface, and Node.js for serving the application, managing server-side logic, and facilitating communication between the client and the database. This stack is known for its ability to create powerful, real-time web applications with a unified JavaScript ecosystem from front-end to back-end.
+
+# STEPS
+
+install node
+install postman
+
+APP(folder)
+├── BACKEND (folder)
+│ ├── server.js (file) //entry point of our application
+
+Create :- package.json (npm init)
+install express
+install nodemon
+install dotenv
+
+\*server.js
+         ├── // Require dotenv
+         require('dotenv').config();
+        //1- Required Express
+        const express = require('express');
+
+        //2-  Creates an express APP
+        const app = express();
+
+
+        //3-  Listen for request
+        app.listen(process.env.PORT, () => {
+            console.log(`Listening on PORT: ${process.env.PORT}`)
+        })
+
+        // 4- Routes
+        app.get('/', (req, res) => {
+        // res.send("Hello World"); //3- Sends a response to the client
+            res.json({msg:'Hello World'}) //3- Sends a response to the client
+        })
+
+
+        // 5- middleware
+        app.use((req, res, next) => {
+            console.log("Middleware")
+            next() //moves on to the next piece of Middleware after its completed.
+            })
