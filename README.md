@@ -38,7 +38,7 @@ install express
 install nodemon
 install dotenv
 
-\*server.js
+* server.js
          ├── // Require dotenv
          require('dotenv').config();
         //1- Required Express
@@ -94,7 +94,7 @@ APP(folder)
 
             Exportes router
 
-*server.js
+* server.js
        ├──
        // 9- Required workouts from Routes
        //10- middleware (express.json())
@@ -104,3 +104,32 @@ APP(folder)
 
         // 4- Routes
         app.use('/api/workouts',workoutRoutes);
+
+
+
+
+# MONGO DB Atlas & MOngoose
+
+**mongoose** :- It is an ODM(object data modelling library) that allows us to use METHODS to read & write Database. It also helps in Declaring Models & Schemas.
+
+install mongoose
+create a new mongoDB cluster
+set the credenrtials and put them in .env file
+
+require mongoose in server.js
+
+* server.js
+        ├──
+        // 11- Connect To Db
+        mongoose
+        .connect(process.env.MONGO_URI)
+        .then(() => {
+            //3-  Listen for request
+            app.listen(process.env.PORT, () => {
+            console.log(`Listening on PORT: ${process.env.PORT} - Connected to DB`);
+            });
+        })
+        .catch((error) => {
+            console.log(`Error connecting to MongoDb ${error}`);
+        });
+
