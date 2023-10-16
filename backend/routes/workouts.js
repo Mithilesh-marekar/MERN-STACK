@@ -3,43 +3,33 @@ const express = require("express");
 //6- creates an instance of express router
 const router = express.Router();
 
-//15-Requiring Workout Schema
-const Workout = require("../models/workoutModel");
+//19- importing request handlers from routes
+const { 
+  create_Workout,
+  get_All_Workout,
+  get_Single_workout,
+  delete_Workout,
+  update_Workout
+} = require('../controller/workoutController')
 
-//7- request handlers
 
+//7- request handlers (Controllers)
+//20
 // to get all workouts
-router.get("/", (req, res) => {
-  res.json({ msg: "Get all WOrkouts" });
-});
+router.get("/", get_All_Workout)
 
 // to get a single workout
-router.get("/:id", (req, res) => {
-  res.json({ msg: "GET a single workout" });
-});
+router.get("/:id", get_Single_workout)
 
 // Post a NEW Workout
 // 16-
-router.post("/", async (req, res) => {
-  const { title, load, reps } = req.body; //requesting body for the document
-// handeling response
-  try {
-    const workout = await Workout.create({ title, load, reps });//response will be stored in 'workout' once document is created
-    res.status(200).json(workout); //Success
-  } catch (error) {
-     res.status(400).json({ error: error.message }); //Failure
-  }
-});
+router.post("/", create_Workout)
 
 //Delete a Workout
-router.delete("/:id", (req, res) => {
-  res.json({ msg: "DELETE a workout" });
-});
+router.delete("/:id", delete_Workout)
 
 //Update a Workout
-router.patch("/:id", (req, res) => {
-  res.json({ msg: "Update a workout" });
-});
+router.patch("/:id", update_Workout )
 
 //8- exporting router
 module.exports = router;
